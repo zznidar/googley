@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Googley</title>
+
+    <link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <header></header>
+    <section class="container">
+        <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+            <div class="form-group">
+                <label for="ime">Pojem</label>
+                <input type="text" class="form-control" id="pojem" placeholder="Pojem" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" onkeypress="keyPress(event)" autofocus />
+            </div>
+            <button onclick="isci()" class="btn btn-default">Prikaži</button>
+        </div>
+    </section>
+
+
+    <section class="container">
+
+        <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+
+            
+            <button onclick="dodaj('č')" class="btn btn-default">č</button>
+            
+            <button onclick="dodaj('š')" class="btn btn-default">š</button>
+            
+            <button onclick="dodaj('ž')" class="btn btn-default">ž</button>
+            
+
+        </div>
+
+    </section>
+
+
+    <section class="container-fluid">
+
+        <div>
+
+            <button class="btn btn-lg col-lg-12 col-md-12 col-xs-12 col-sm-12" style="padding: 180px 28px; font-size: 22px;" onclick="document.getElementById('pojem').focus();">Focus</button>
+
+        </div>
+
+    </section>
+
+
+
+    <footer>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text" style="font-family:Aleo">© Žan Žnidar, 2016</p>
+                <p class="navbar-text navbar-right">Googley 1</p>
+            </div>
+
+        </nav>
+
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="css/bootstrap/js/bootstrap.js"></script>
+
+    <script>
+
+
+        /*function foo() {
+        }
+        onload = foo;*/
+        
+        function dodaj(letter) {
+            var tempVal = document.getElementById('pojem').value;
+            document.getElementById("pojem").value = tempVal + letter;
+            document.getElementById("pojem").focus();
+        }
+
+        function keyPress(event) {
+            var x = event.which || event.keyCode;
+            if (x == 13) {
+                isci();
+            }
+        }
+
+        function isci() {
+            var searchTerm = document.getElementById('pojem').value;
+            var selectedVal = "https://www.google.si/#q=" + searchTerm;
+
+            document.getElementById("pojem").placeholder = searchTerm;
+            document.getElementById("pojem").value = "";
+
+            window.open(selectedVal);
+
+        }
+
+    </script>
+
+</body>
+</html>
